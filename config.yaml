@@ -1,0 +1,57 @@
+app:
+  name: "ecommerce"
+  env: demo
+  migration_path: "internal/db/migrations"
+  template_path: "internal/email/templates"
+
+storage:
+  driver: "local"
+  base_url: "http://static.local.cs.com"
+  gcs:
+    bucket: ""
+    credential_path: ""
+  s3:
+    key: ""
+    secret: ""
+    region: ""
+    bucket: ""
+    endpoint: ""
+
+log:
+  app_name: ecommerce
+  environment: local
+  level: 0
+  directory: ./logs
+
+http:
+  mode: release
+  port: 8082
+
+database:
+  debug: true
+  type: mysql
+  host: localhost
+  port: 3306
+  username: root
+  password: abcd1234
+  db_name: demo
+  max_idle_connections: 25
+  max_open_connections: 25
+  max_lifetime_sec: 300
+
+redis:
+  master_name: ""
+  addresses:
+    - "localhost:6379"
+  password: ""
+  db: 0
+
+tappay:
+  ip_list:
+    - "1.2.3.4"
+    - "127.0.0.1"
+
+mailgun:
+  sender: "<service@ecommerce.com>"
+  domain: ""
+  api_key: ""

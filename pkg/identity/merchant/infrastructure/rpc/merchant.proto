@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package rpc;
+option go_package = "ecommerce-api/pkg/identity/merchant/infrastructure/rpc";
+
+// The greeting service definition.
+service Merchant {
+  // Sends a greeting
+  rpc GetMerchantByHost (GetMerchantByHostRequest) returns (GetMerchantByHostResponse) {}
+}
+
+// The request message containing the user's name.
+message GetMerchantByHostRequest {
+  string host = 1;
+}
+
+// The response message containing the greetings
+message GetMerchantByHostResponse {
+  string host = 1;
+  string name = 2;
+  string code = 3;
+  string encrypt_salt = 4;
+}

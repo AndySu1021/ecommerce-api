@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS `product`
+(
+    id                      bigint unsigned auto_increment primary key,
+    merchant_id             bigint unsigned           not null comment '商戶ID',
+    name                    varchar(30)               not null comment '名稱',
+    category_id             bigint unsigned           not null comment '商品分類ID',
+    currency_id             tinyint         default 1 not null comment '幣別 1新台幣',
+    price                   bigint unsigned           not null comment '價格',
+    special_price           bigint unsigned default 0 not null comment '優惠價格',
+    special_price_start     datetime                  null comment '優惠價格開始時間',
+    special_price_end       datetime                  null comment '優惠價格結束時間',
+    single_order_limit      integer         default 0 not null comment '單筆訂單限購數量',
+    is_single_order_only    tinyint         default 0 not null comment '是否一個商品成立一筆訂單 0否 1是',
+    temperature             tinyint         default 1 not null comment '溫層 1常溫 2冷藏 3冷凍',
+    length                  int             default 1 not null comment '長度',
+    width                   int             default 1 not null comment '寬度',
+    height                  int             default 1 not null comment '高度',
+    weight                  int             default 1 not null comment '重量(公克)',
+    support_delivery_method json                      not null comment '支援配送方式 1宅配到府 2超商取貨',
+    is_air_contraband       tinyint         default 0 not null comment '是否為航空禁運品 0否 1是',
+    description             text                      not null comment '商品描述',
+    pictures                json                      not null comment '商品圖片',
+    extra                   json                      not null comment '其他',
+    is_enabled              tinyint         default 0 not null comment '是否啟用 0下架 1上架',
+    sales                   bigint unsigned default 0 not null comment '總銷售量(每日更新)',
+    created_at              datetime                  not null comment '創建時間',
+    updated_at              datetime                  not null comment '更新時間'
+) COMMENT ='商品資料表' COLLATE utf8mb4_general_ci;
